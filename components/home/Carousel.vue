@@ -24,7 +24,7 @@
             src: require(`~/assets/images/home/img1.jpg`),
           },
           {
-            src: require(`~/assets/images/home/img4.jpeg`),
+            src: require(`~/assets/images/home/img5.jpeg`),
           },
           {
             src: require(`~/assets/images/home/img3.jpg`),
