@@ -1,50 +1,60 @@
 <template>
   <v-container>
-    <v-row>
-      <v-col class="12" md="9">
-        <v-card height="">
-          <v-img height="400" src="https://images.unsplash.com/photo-1602501348556-b729a273f368?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></v-img>
-        </v-card>
-      </v-col>
-      <v-col class="12" md="3">
-        <v-card>
-          <v-toolbar flat>
-            <v-toolbar-title>Coming events</v-toolbar-title>
-          </v-toolbar>
-          <v-card flat>
-            <v-card-title class="text-body-2 font-weight-medium">Sunderland Police officer visits</v-card-title>
-            <v-card-text>
-              Date: 23th July 2021<br>
-              More Info:
-            </v-card-text>
-          </v-card>
-        </v-card>
-      </v-col>
-    </v-row>
-    <p class="my-10 text-center text-h4">Recent Events</p>
-    <v-row>
-      <v-col cols="12" md="6">
-        <v-card>
-          <v-img src="https://images.unsplash.com/photo-1510743006598-4845616e044f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"></v-img>
-          
-        </v-card>
-      </v-col>
-      
-      <v-col cols="12" md="6">
-        <v-card>
-          <v-img src="https://images.unsplash.com/photo-1521961835394-3ffc4d600e40?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1350&q=80"></v-img>
-          
-        </v-card>
-      </v-col>
-    </v-row>
-    <p>Coming events</p>
+     <v-row>
+    <v-col
+      v-for="(image, n) in images"
+      :key="n"
+      class="d-flex child-flex"
+      cols="4"
+    >
+      <v-img
+        :src="image.src"
+        :lazy-src="`https://picsum.photos/10/6?image=${n * 5 + 10}`"
+        aspect-ratio="1"
+        class="grey lighten-2 d-flex justify-center align-end" 
 
+      >
+      <v-card class=" text-center pa-2" color="grey lighten-3">
+       <nuxt-link :to="`/events/${image.id}`">View</nuxt-link>
+       
+      </v-card>
+        <template v-slot:placeholder>
+          <v-row
+            class="fill-height ma-0"
+            align="center"
+            justify="center"
+          >
+            <v-progress-circular
+              indeterminate
+              color="grey lighten-5"
+            ></v-progress-circular>
+          </v-row>
+        </template>
+      </v-img>
+    </v-col>
+  </v-row>
   </v-container>
 </template>
 
 <script>
 export default {
-
+  head: {
+    title: 'Events',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'African Carribean Community Association North East'
+      }
+    ],
+  },
+  created() {
+    console.log(this.$store.state['events'].images)
+    this.images = this.$store.state['events'].images
+  },
+  data: () => ({
+    images: []
+  })
 }
 </script>
 

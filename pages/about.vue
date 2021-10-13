@@ -33,7 +33,16 @@ We are presently managing a £40,000 grant from the Peoples Health Trust to prov
 
 <script>
 export default {
-
+  head: {
+    title: 'About us',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'African Carribean Community Association North East'
+      }
+    ],
+  }
 }
 </script>
 

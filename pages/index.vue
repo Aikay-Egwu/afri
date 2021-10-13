@@ -53,6 +53,16 @@
 
 <script>
 export default {
+  head: {
+    title: 'Home page',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'African Carribean Community Association North East'
+      }
+    ],
+  },
   data: () => ({
     about: require(`~/assets/images/about.jpg`),
     images: [

@@ -20,10 +20,10 @@
               Email: afrocaribbean55@gmail.com
             </v-card-text>
             <p class="font-weight-medium text-h6">Social</p>
-            <a href="https://www.facebook.com" class="text-decoration-none">
+            <a href="https://www.facebook.com/accane.org" class="text-decoration-none">
               <v-icon color="blue" large>mdi-facebook</v-icon>
             </a>
-            <a href="https://twitter.com/" class="text-decoration-none">
+            <a href="https://twitter.com/africancaribbe2" class="text-decoration-none">
               <v-icon color="blue lighten-3" large>mdi-twitter</v-icon>
             </a>
           </v-card>
@@ -41,7 +41,16 @@
 
 <script>
 export default {
-
+  head: {
+    title: 'Contact',
+    meta: [
+      {
+        hid: 'description',
+        name: 'description',
+        content: 'African Carribean Community Association North East'
+      }
+    ],
+  }
 }
 </script>
 

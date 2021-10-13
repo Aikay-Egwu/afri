@@ -26,7 +26,7 @@
     </v-navigation-drawer>
     <v-system-bar
     height="30"
-    
+
     app
     color="grey lighten-2"
   >
@@ -34,11 +34,13 @@
     <span class="d-none d-sm-inline">Together we do more!</span>
     <div class="">
       07455757500 | afrocaribbean55@gmail.com |
-      <v-icon>mdi-facebook</v-icon>
-      <v-icon>mdi-twitter</v-icon>
+      <a href="https://www.facebook.com/accane.org" class="text-decoration-none">
+              <v-icon color="blue" small>mdi-facebook</v-icon>
+            </a>
+      <a href="https://twitter.com/africancaribbe2" class="text-decoration-none"><v-icon>mdi-twitter</v-icon></a>
     </div>
   </v-card>
-    
+
     <!-- <v-spacer></v-spacer>
       03454564545 | contact@afro.co.uk |
       <v-icon>mdi-facebook</v-icon>
@@ -55,16 +57,16 @@
       <v-toolbar-title class="text-caption text-center font-weight-medium text-sm-h6 text-md-h5" v-text="title" />
       <v-spacer></v-spacer>
       <div class="d-none d-md-inline">
-        <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/">Home</nuxt-link> 
-      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/about">About</nuxt-link> 
-      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/events">Events</nuxt-link> 
-      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/contact">Contact</nuxt-link> 
+        <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/">Home</nuxt-link>
+      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/about">About</nuxt-link>
+      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/events">Events</nuxt-link>
+      <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/contact">Contact</nuxt-link>
       </div>
     </v-app-bar>
     <v-main>
         <nuxt />
     </v-main>
-    
+
     <v-footer
       :absolute="!fixed"
       app
@@ -75,9 +77,9 @@
           <span>&copy; {{ new Date().getFullYear() }}</span>
         </v-card-text>
         <v-card-text class="text-center text-decoration-none">
-          <nuxt-link class="text-decoration-none font-weight-medium" to="/">Home</nuxt-link> | 
-          <nuxt-link class="text-decoration-none font-weight-medium" to="/about">About</nuxt-link> | 
-          <nuxt-link class="text-decoration-none font-weight-medium" to="/events">Events</nuxt-link> | 
+          <nuxt-link class="text-decoration-none font-weight-medium" to="/">Home</nuxt-link> |
+          <nuxt-link class="text-decoration-none font-weight-medium" to="/about">About</nuxt-link> |
+          <nuxt-link class="text-decoration-none font-weight-medium" to="/events">Events</nuxt-link> |
           <nuxt-link class="text-decoration-none font-weight-medium" to="/contact">Contact</nuxt-link>
         </v-card-text>
       </v-card>
@@ -113,7 +115,7 @@ export default {
           title: 'Contact',
           to: '/contact'
         },
-        
+
       ],
       miniVariant: false,
       right: true,
