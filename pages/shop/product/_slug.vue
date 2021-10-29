@@ -1,17 +1,25 @@
 <template>
   <v-card>
-    
+
     <v-card max-width="700" class="mx-auto" flat>
     <v-row v-if="product">
-      <v-col cols="12" md="8">
-        <v-img :src="image(product.product_image)" ></v-img>
+      <v-col cols="12" md="6">
+
+        <v-img :src="image(product.product_image)" height="500" ></v-img>
       </v-col>
-      <v-col cols="12" md="4">
-        {{ product.name }}
-        <p class="font-weight-medium">£ {{ product.price }}</p>
-        <p> {{ product.description }} </p>
-        <p>Pick up at the center</p>
-        <v-btn color="blue lighten-2">Add to basket</v-btn>
+      <v-col cols="12" md="6">
+        <v-card flat>
+          <v-card-text class="font-weight-bold">{{ product.name }}</v-card-text>
+          <v-card-text>£ {{ product.price }}</v-card-text>
+          <v-card-text>
+            <strong>Item Description</strong><br>
+            {{ product.description }}</v-card-text>
+        </v-card>
+
+        <p class="font-weight-medium"></p>
+        <p>  </p>
+
+        <v-btn color="blue lighten-2" @click="addToCart()">Add to basket</v-btn>
       </v-col>
     </v-row>
   </v-card>
@@ -24,7 +32,7 @@ export default {
     this.initialize()
   },
   data: () => ({
-    //product: []
+    quantity: 1
   }),
   computed: {
     product() {
@@ -35,16 +43,26 @@ export default {
     image(img) {
       //console.log((img))
       if (img !== null) {
-        console.log("something")
-        console.log(img)
-        return img[0].image
+
+        return `http://localhost:8000${img[0].image}`
       }
     },
      isEmptyObject(value) {
       return Object.keys(value).length === 0 && value.constructor === Object;
     },
     async initialize() {
-      await this.$store.dispatch("shop/aGetProductSlug", this.$route.params['slug'])
+
+      await this.$store.dispatch("shop/aGetProductItem", this.$route.params['slug'])
+    },
+    addToCart() {
+      if (isNaN(this.quantity) || this.quantity < 1) {
+          this.quantity = 1
+      }
+      const item = {
+          product: this.product,
+          quantity: this.quantity
+      }
+      this.$store.commit('shop/addToCart', item)
     }
   }
 }

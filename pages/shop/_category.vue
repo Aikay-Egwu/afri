@@ -3,10 +3,11 @@
     <v-row>
       <v-col cols="12" md="3" v-for="(product, i) in products" :key="i">
         <v-card flat outlined>
-          <nuxt-link :to="productLink(product.slug)"><v-img height="400" :src="image(product.product_image)" ></v-img></nuxt-link>
-          <v-divider></v-divider>
-          {{ product.name }}
-          <div>£ {{ product.price }}</div>
+          <nuxt-link :to="productLink(product.slug)"><v-img height="300" max-width="400" contain :src="image(product.product_image)" ></v-img></nuxt-link>
+          <v-card-text class="font-weight-bold">
+            {{ product.name }} <br> £ {{ product.price }} <v-btn @click="addToCart()" text><v-icon left>mdi-cart-arrow-down</v-icon>Add to cart</v-btn>
+          </v-card-text>
+          <div></div>
 
         </v-card>
       </v-col>
@@ -21,7 +22,7 @@ export default {
     this.initialize()
   },
   data: () => ({
-    //product: []
+    quantity: 0
   }),
   computed: {
     products() {
@@ -33,7 +34,17 @@ export default {
   },
    methods: {
      image(img) {
-      return "http://localhost:8000" + img[0].image
+      return "https://api.accane.org" + img[0].image
+    },
+    addToCart() {
+        if (isNaN(this.quantity) || this.quantity < 1) {
+            this.quantity = 1
+        }
+        const item = {
+            product: this.product,
+            quantity: this.quantity
+        }
+        this.$store.commit('addToCart', item)
     },
     productLink(slug)  {
       return "/shop/product/" + slug
@@ -51,7 +62,7 @@ export default {
     },
     async initialize() {
       console.log("this is happening")
-      await this.$store.dispatch("shop/aGetProductCategory", this.$route.params['slug'])
+      await this.$store.dispatch("shop/aGetProductCategory", this.$route.params['category'])
     }
   }
 }

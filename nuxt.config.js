@@ -53,7 +53,8 @@ export default {
 
   publicRuntimeConfig: {
     axios: {
-      browserBaseURL: 'http://localhost:8000/'
+      browserBaseURL: 'https://api.accane.org/'
+      //browserBaseURL: 'http://localhost:8000/'
     }
   },
 

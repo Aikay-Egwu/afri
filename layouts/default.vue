@@ -61,6 +61,7 @@
       <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/about">About</nuxt-link>
       <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/events">Events</nuxt-link>
       <nuxt-link class="text-decoration-none pa-2 font-weight-bold text-h6" to="/contact">Contact</nuxt-link>
+      <nuxt-link v-if="cartTotalLength" class="text-decoration-none pa-2 font-weight-bold text-h6" to="/shop/basket"><v-icon>mdi-cart</v-icon> {{ cartTotalLength }}</nuxt-link>
       </div>
     </v-app-bar>
     <v-main>
@@ -120,8 +121,31 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'African & Caribbean Community Association NE'
+      title: 'African & Caribbean Community Association NE',
+      cart: this.liveCart
     }
-  }
+  },
+  computed: {
+    liveCart() {
+      return this.$store.getters['shop/gCart']
+    },
+    cartTotalLength() {
+      let totalLength = 0
+      console.log(this.liveCart)
+      for (let i = 0; i < this.liveCart.items.length; i++) {
+          totalLength += this.liveCart.items[i].quantity
+      }
+      return totalLength
+    }
+  },
+  beforeCreate() {
+    this.$store.commit('shop/initializeStore')
+    //const token = this.$store.state.token
+    /* if (token) {
+        axios.defaults.headers.common['Authorization'] = "Token " + token
+    } else {
+        axios.defaults.headers.common['Authorization'] = ""
+    } */
+  },
 }
 </script>

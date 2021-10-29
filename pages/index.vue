@@ -1,11 +1,11 @@
 <template>
   <v-card>
-    
+
     <HomeCarousel />
 
     <v-container>
       <v-card flat>
-        
+
         <v-card max-width="800" class="mx-auto my-10" flat>
           <v-card-text
           class="text-h5 text-sm-h3 text-center px-4"
@@ -30,6 +30,9 @@
 
       <p class="text-center text-h4 grey--text font-weight-normal my-14">At Our Center</p>
       <HomeCenter />
+
+      <p class="text-center text-h4 grey--text font-weight-normal my-14">Stay Updated</p>
+      <a class="twitter-timeline" data-height="600" data-theme="light" href="https://twitter.com/AfricanCaribbe2?ref_src=twsrc%5Etfw">Tweets by AfricanCaribbe2</a> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
       <p class="text-center text-h4 grey--text font-weight-normal my-14">Our Sponsors</p>
       <v-card class="mx-auto" flat>
